@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asset Register Check</title>
+<meta name="description" content="Is your asset register ready for AI? Drop in a CSV. Plain rules find what makes an AI give wrong answers about your building. Runs in your browser, nothing is uploaded.">
+<meta property="og:title" content="Is your asset register ready for AI?">
+<meta property="og:description" content="Drop in a CSV. It runs in your browser and nothing is uploaded.">
+<meta property="og:image" content="https://mohdimran32000.github.io/asset-register-check/preview.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect x=%222%22 y=%222%22 width=%2212%22 height=%2212%22 rx=%222%22 fill=%22%23f1b54b%22/%3E%3Cpath d=%22M5 8.2l2 2 4-4.4%22 stroke=%22%23131720%22 stroke-width=%221.8%22 fill=%22none%22/%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #f6f4ef; --panel: #ffffff; --ink: #131720; --ink-2: #4a5160; --ink-3: #7b8190; --line: #e3dfd6;
+  --accent: #b7791f; --accent-soft: #fbf1df; --good: #1f7a4d; --good-soft: #e3f3ea; --warn: #9a6200; --warn-soft: #fbefd7;
+  --bad: #b3261e; --bad-soft: #fbe5e3; --code: #f0ede6; --shadow: 0 1px 2px rgba(19,23,32,.06), 0 8px 24px rgba(19,23,32,.06);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1218; --panel: #171b23; --ink: #eef0f4; --ink-2: #b6bcc8; --ink-3: #868d9b; --line: #272d38;
+    --accent: #f1b54b; --accent-soft: #2a2416; --good: #5fd39a; --good-soft: #15291f; --warn: #f1b54b; --warn-soft: #2a2416;
+    --bad: #ff8a80; --bad-soft: #2e1817; --code: #1f2430; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1218; --panel: #171b23; --ink: #eef0f4; --ink-2: #b6bcc8; --ink-3: #868d9b; --line: #272d38;
+  --accent: #f1b54b; --accent-soft: #2a2416; --good: #5fd39a; --good-soft: #15291f; --warn: #f1b54b; --warn-soft: #2a2416;
+  --bad: #ff8a80; --bad-soft: #2e1817; --code: #1f2430; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 28px 16px 64px; }
+header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.kicker { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+h1 { font-size: clamp(26px, 4vw, 38px); line-height: 1.1; margin: 6px 0 6px; letter-spacing: -.02em; }
+.sub { color: var(--ink-2); margin: 0; max-width: 640px; }
+.privacy { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--good); background: var(--good-soft); padding: 6px 10px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+.grid { display: grid; grid-template-columns: 320px 1fr; gap: 18px; align-items: start; }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); }
+.pad { padding: 18px; }
+h2 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px; font-weight: 700; }
+.drop { display: block; border: 2px dashed var(--line); border-radius: 12px; padding: 22px 14px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+.drop:hover, .drop.over { border-color: var(--accent); background: var(--accent-soft); }
+.drop b { display: block; font-size: 15px; margin-bottom: 4px; }
+.drop span { color: var(--ink-3); font-size: 13px; }
+.or { text-align: center; color: var(--ink-3); font-size: 12px; margin: 12px 0 10px; }
+.samples { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+button { font: inherit; cursor: pointer; }
+.btn { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 10px; padding: 9px 10px; font-weight: 600; font-size: 13.5px; text-align: left; }
+.btn:hover { border-color: var(--accent); }
+.btn small { display: block; font-weight: 400; color: var(--ink-3); font-size: 12px; }
+.btn.on { border-color: var(--accent); background: var(--accent-soft); }
+.file { margin-top: 14px; font-size: 13px; color: var(--ink-2); word-break: break-all; }
+.map { margin-top: 16px; display: none; }
+.map.show { display: block; }
+.map table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.map td { padding: 4px 0; vertical-align: middle; }
+.map td:first-child { color: var(--ink-2); padding-right: 8px; white-space: nowrap; }
+.map select { width: 100%; font: inherit; font-size: 13px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); color: var(--ink); }
+.req { color: var(--accent); }
+.empty { padding: 56px 24px; text-align: center; color: var(--ink-3); }
+.empty b { color: var(--ink); display: block; font-size: 18px; margin-bottom: 6px; }
+.top { display: grid; grid-template-columns: 220px 1fr; gap: 18px; padding: 20px; align-items: center; }
+@media (max-width: 600px) { .top { grid-template-columns: 1fr; } }
+.score { text-align: center; }
+.score .n { font-size: 64px; font-weight: 800; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.score .of { color: var(--ink-3); font-size: 14px; margin-top: 4px; }
+.verdict { display: inline-block; margin-top: 10px; padding: 5px 12px; border-radius: 999px; font-weight: 700; font-size: 14px; }
+.v-Ready { color: var(--good); background: var(--good-soft); }
+.v-Close { color: var(--warn); background: var(--warn-soft); }
+.v-Not { color: var(--bad); background: var(--bad-soft); }
+.meter { height: 10px; border-radius: 99px; background: var(--code); overflow: hidden; margin-top: 12px; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .9s cubic-bezier(.2,.8,.2,1); }
+.facts { font-size: 15px; color: var(--ink-2); }
+.facts p { margin: 0 0 6px; }
+.facts strong { color: var(--ink); }
+.dims { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; padding: 0 20px 20px; }
+@media (max-width: 700px) { .dims { grid-template-columns: repeat(2, 1fr); } }
+.dim { border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.dim .k { font-size: 12px; color: var(--ink-3); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.dim .v { font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.dim .v.zero { color: var(--good); }
+.dim .s { font-size: 12px; color: var(--ink-3); }
+.section { margin-top: 18px; }
+.first { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 760px) { .first { grid-template-columns: 1fr; } }
+.fix { padding: 16px; border-left: 4px solid var(--accent); }
+.fix .c { font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.fix .t { font-weight: 700; margin: 2px 0 6px; }
+.fix .w { color: var(--ink-2); font-size: 14px; margin: 0; }
+details.check { border-top: 1px solid var(--line); }
+details.check:first-of-type { border-top: 0; }
+details.check summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: center; padding: 14px 18px; }
+details.check summary::-webkit-details-marker { display: none; }
+.cnt { font-weight: 800; font-size: 20px; font-variant-numeric: tabular-nums; text-align: right; }
+.ct { font-weight: 650; }
+.cw { color: var(--ink-3); font-size: 13.5px; }
+.tagdim { font-size: 11.5px; padding: 3px 8px; border-radius: 99px; background: var(--code); color: var(--ink-2); font-weight: 600; }
+.rows { padding: 0 18px 16px; overflow-x: auto; }
+.rows table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.rows th { text-align: left; font-weight: 600; color: var(--ink-3); padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.rows td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.rows code { background: var(--code); padding: 1px 6px; border-radius: 5px; font-size: 12.5px; white-space: pre; }
+.more { color: var(--ink-3); font-size: 13px; padding-top: 8px; }
+.key { padding: 18px; display: none; }
+.key.show { display: block; }
+.keynums { display: flex; gap: 22px; flex-wrap: wrap; margin: 4px 0 10px; }
+.keynums div { font-size: 13px; color: var(--ink-3); }
+.keynums b { display: block; font-size: 26px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.keynote { font-size: 14px; color: var(--ink-2); margin: 0; }
+.bar-actions { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; border-bottom: 1px solid var(--line); }
+.link { background: none; border: 0; color: var(--accent); font-weight: 600; font-size: 13.5px; padding: 0; }
+footer { margin-top: 28px; color: var(--ink-3); font-size: 13px; display: grid; gap: 6px; }
+footer a { color: inherit; }
+.toggle { justify-self: start; border: 1px solid var(--line); background: var(--panel); color: var(--ink-2); border-radius: 99px; padding: 6px 12px; font-size: 12px; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="kicker">Asset register check</div>
+      <h1>Is your asset register ready for AI?</h1>
+      <p class="sub">Drop in a CSV. Plain rules find what makes an AI give wrong answers about your building, and say why each one matters.</p>
+    </div>
+    <div class="privacy" title="The file is read by this page in your browser. It is never sent anywhere.">
+      <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l5.5 2v4.3c0 3.4-2.3 6.3-5.5 7.7C4.8 13.6 2.5 10.7 2.5 7.3V3z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 8l1.8 1.8L10.8 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      Runs in your browser. Nothing is uploaded.
+    </div>
+  </header>
+
+  <div class="grid">
+    <aside class="card pad">
+      <h2>Your register</h2>
+      <label class="drop" id="drop">
+        <b>Drop a CSV here</b>
+        <span>or click to choose a file. Export from your CAFM, or save the COBie Component sheet as CSV.</span>
+        <input type="file" id="pick" accept=".csv,text/csv" hidden>
+      </label>
+      <div class="or">or try a sample (a fictional 80-floor tower)</div>
+      <div class="samples">
+        <button class="btn" data-sample="messy">Messy register<small>1,753 rows, problems planted</small></button>
+        <button class="btn" data-sample="clean">Clean register<small>1,767 rows</small></button>
+      </div>
+      <div class="file" id="file"></div>
+      <div class="map" id="map">
+        <h2 style="margin-top:6px">Columns found</h2>
+        <table id="maptable"></table>
+        <p class="cw" style="margin:8px 0 0">Matched by name. Fix any that are wrong and it re-checks. <span class="req">*</span> required.</p>
+      </div>
+    </aside>
+
+    <main id="out">
+      <div class="card empty" id="empty">
+        <b>Nothing checked yet</b>
+        Drop your register on the left, or open the messy sample to see what it finds.
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div><b>How it works.</b> Plain rules, no AI. They look for duplicates, empty fields, the same thing spelled several ways, dates that can't be right, parents that don't exist, and floors missing assets their neighbours have.</div>
+    <div><b>The score</b> is the share of assets with no problem found, counting assets a floor seems to be missing. It's this tool's own rubric, not an industry standard.</div>
+    <div><b>The samples</b> are fictional, generated from the rules of the <a href="https://mohdimran32000.github.io/procedural-dubai/">Procedural Dubai</a> tower at 80 floors. Generic vendors, made-up serials. The messy one has 190 problems planted on purpose, listed in an answer key.</div>
+    <button class="toggle" id="theme">Light / dark</button>
+  </footer>
+</div>
+
+<script src="checker.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const el = (tag, attrs = {}, ...kids) => {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) { if (k === 'class') n.className = v; else if (k === 'html') n.innerHTML = v; else if (k.startsWith('on')) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v); }
+    for (const k of kids.flat()) if (k != null) n.append(k.nodeType ? k : document.createTextNode(String(k)));
+    return n;
+  };
+  const fmt = n => Number(n).toLocaleString('en-US');
+  let table = null, map = {}, sampleKey = null, lastResult = null;
+
+  // ---- theme
+  try { const t = localStorage.getItem('arc-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  $('#theme').onclick = () => {
+    const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('arc-theme', next); } catch (e) {}
+  };
+
+  // ---- input
+  const drop = $('#drop'), pick = $('#pick');
+  ['dragenter', 'dragover'].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', ev => { const f = ev.dataTransfer.files[0]; if (f) readFile(f); });
+  pick.addEventListener('change', () => { if (pick.files[0]) readFile(pick.files[0]); });
+  function readFile(f) {
+    const r = new FileReader();
+    r.onload = () => load(r.result, f.name, null);
+    r.readAsText(f);
+    document.querySelectorAll('[data-sample]').forEach(b => b.classList.remove('on'));
+  }
+  document.querySelectorAll('[data-sample]').forEach(b => b.onclick = async () => {
+    document.querySelectorAll('[data-sample]').forEach(x => x.classList.toggle('on', x === b));
+    const name = b.dataset.sample;
+    try {
+      const csv = await fetch(`samples/asset-register-${name}.csv`).then(r => { if (!r.ok) throw 0; return r.text(); });
+      const key = name === 'messy' ? await fetch('samples/answer-key.json').then(r => r.json()) : null;
+      load(csv, `asset-register-${name}.csv (sample)`, key);
+    } catch (e) {
+      $('#file').textContent = 'Samples load from the live page. Opened as a local file, drop a CSV instead.';
+    }
+  });
+
+  function load(text, name, key) {
+    table = Checker.parseCSV(text);
+    map = Checker.detectColumns(table.headers);
+    sampleKey = key;
+    $('#file').innerHTML = '';
+    $('#file').append(el('b', {}, name), ` · ${fmt(table.rows.length)} rows, ${table.headers.length} columns`);
+    drawMap();
+    run();
+  }
+
+  function drawMap() {
+    const t = $('#maptable'); t.innerHTML = '';
+    for (const [k, def] of Object.entries(Checker.FIELDS)) {
+      const sel = el('select', { 'aria-label': def.label, onchange: e => { const v = e.target.value; if (v === '') delete map[k]; else map[k] = +v; run(); } },
+        el('option', { value: '' }, 'not in this file'),
+        table.headers.map((h, i) => { const o = el('option', { value: i }, h); if (map[k] === i) o.selected = true; return o; }));
+      t.append(el('tr', {}, el('td', {}, def.label, Checker.REQUIRED.includes(k) ? el('span', { class: 'req' }, ' *') : null), el('td', {}, sel)));
+    }
+    $('#map').classList.add('show');
+  }
+
+  // ---- results
+  function run() {
+    const r = Checker.analyze(table, map);
+    lastResult = r;
+    const out = $('#out'); out.innerHTML = '';
+    const vClass = 'v-' + r.verdict.split(' ')[0];
+    const total = r.rows + r.missingAssets;
+
+    const top = el('div', { class: 'card' },
+      el('div', { class: 'top' },
+        el('div', { class: 'score' },
+          el('div', { class: 'n', id: 'scoreN' }, '0'),
+          el('div', { class: 'of' }, 'AI-readiness, out of 100'),
+          el('span', { class: 'verdict ' + vClass }, r.verdict === 'Ready' ? 'Ready' : r.verdict === 'Close' ? 'Close. Fix the list below.' : 'Not yet')),
+        el('div', { class: 'facts' },
+          el('p', {}, el('strong', {}, fmt(r.clean)), ` of ${fmt(total)} assets have no problem found.`),
+          r.flaggedRows ? el('p', {}, el('strong', {}, fmt(r.flaggedRows)), ' rows need a fix.') : el('p', {}, 'Nothing found by these rules.'),
+          r.missingAssets ? el('p', {}, 'About ', el('strong', {}, fmt(r.missingAssets)), ' assets look missing from floors that should have them.') : null,
+          el('div', { class: 'meter' }, el('i', { id: 'meterI' })))),
+      el('div', { class: 'dims' }, r.dims.map(d => el('div', { class: 'dim' },
+        el('div', { class: 'k' }, d.name),
+        el('div', { class: 'v' + (d.issues ? '' : ' zero') }, d.issues ? fmt(d.issues) : '0'),
+        el('div', { class: 's' }, d.issues ? (d.name === 'Coverage' ? 'floors with gaps' : `issue${d.issues > 1 ? 's' : ''}`) : 'all clear')))));
+    out.append(top);
+    countUp($('#scoreN'), r.score);
+    requestAnimationFrame(() => requestAnimationFrame(() => { $('#meterI').style.width = r.score + '%'; }));
+
+    if (sampleKey) {
+      const s = Checker.scoreAgainstKey(r, sampleKey);
+      const card = el('div', { class: 'card key show section' },
+        el('h2', {}, 'Checked against the answer key'),
+        el('div', { class: 'keynums' },
+          el('div', {}, el('b', {}, fmt(s.planted)), 'problems planted'),
+          el('div', {}, el('b', {}, fmt(s.found)), 'found'),
+          el('div', {}, el('b', {}, fmt(s.missed.length)), 'missed'),
+          el('div', {}, el('b', {}, fmt(s.falseAlarms.length)), 'false alarms')),
+        el('p', { class: 'keynote' }, s.missed.length
+          ? `Missed: ${[...new Set(s.missed.map(m => `"${m.messy}"`))].join(', ')} written for "${s.missed[0].clean}" (${s.missed.length} rows). Same thing, different words. Rules catch spelling, not meaning.`
+          : 'Every planted problem was found.'),
+        s.extra.length ? el('p', { class: 'keynote', style: 'margin-top:6px' }, `${s.extra.length} more flags are knock-on effects of planted problems, like the other row of a duplicated tag.`) : null);
+      out.append(card);
+    }
+
+    if (!r.checks.length) return;
+    const first = r.checks.slice(0, 3);
+    out.append(el('div', { class: 'section' },
+      el('h2', {}, 'Fix these first'),
+      el('div', { class: 'first' }, first.map(c => el('div', { class: 'card fix' },
+        el('div', { class: 'c' }, fmt(c.count)), el('div', { class: 't' }, c.title), el('p', { class: 'w' }, c.why))))));
+
+    const list = el('div', { class: 'card' },
+      el('div', { class: 'bar-actions' }, el('h2', { style: 'margin:0' }, 'Everything it found'),
+        el('button', { class: 'link', onclick: downloadIssues }, 'Download as CSV')),
+      r.checks.map(c => {
+        const d = el('details', { class: 'check' },
+          el('summary', {}, el('div', { class: 'cnt' }, fmt(c.count)),
+            el('div', {}, el('div', { class: 'ct' }, c.title), el('div', { class: 'cw' }, c.why)),
+            el('span', { class: 'tagdim' }, c.dim)));
+        d.addEventListener('toggle', () => { if (d.open && !d.dataset.drawn) { d.append(rowsTable(c)); d.dataset.drawn = 1; } }, { once: false });
+        return d;
+      }));
+    out.append(el('div', { class: 'section' }, list));
+  }
+
+  function rowsTable(c) {
+    const show = c.items.slice(0, 200);
+    const isGap = c.key === 'gap';
+    return el('div', { class: 'rows' }, el('table', {},
+      el('thead', {}, el('tr', {}, isGap ? [el('th', {}, 'Level'), el('th', {}, 'Found'), el('th', {}, 'Note')] : [el('th', {}, 'Row'), el('th', {}, 'Tag'), el('th', {}, 'Field'), el('th', {}, 'Value'), el('th', {}, 'Note')])),
+      el('tbody', {}, show.map(it => el('tr', {}, isGap
+        ? [el('td', {}, it.level), el('td', {}, it.value), el('td', {}, it.note)]
+        : [el('td', {}, it.row), el('td', {}, el('code', {}, it.tag || '')), el('td', {}, it.field || 'whole row'), el('td', {}, it.value === '' ? el('i', {}, 'empty') : el('code', {}, it.value)), el('td', {}, it.note)])))),
+      c.items.length > show.length ? el('div', { class: 'more' }, `Showing 200 of ${fmt(c.items.length)}. Download the CSV for all of them.`) : null);
+  }
+
+  function downloadIssues() {
+    if (!lastResult) return;
+    const q = v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
+    const lines = [['check', 'dimension', 'row', 'tag', 'field', 'value', 'note'].join(',')];
+    for (const c of lastResult.checks) for (const it of c.items) lines.push([c.title, c.dim, it.row, it.tag, it.field, it.value, it.note].map(q).join(','));
+    const a = el('a', { href: URL.createObjectURL(new Blob([lines.join('\n')], { type: 'text/csv' })), download: 'register-issues.csv' });
+    document.body.append(a); a.click(); a.remove();
+  }
+
+  function countUp(node, to) {
+    const t0 = performance.now(), dur = 900;
+    const step = t => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3); node.textContent = (to * e).toFixed(to % 1 ? 1 : 0); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+
+  // ?sample=messy opens a sample straight away (handy for screen recording)
+  const s = new URLSearchParams(location.search).get('sample');
+  if (s) document.querySelector(`[data-sample="${s}"]`)?.click();
+})();
+</script>
+</body>
+</html>

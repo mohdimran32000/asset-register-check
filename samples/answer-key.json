@@ -1,0 +1,1710 @@
+[
+ {
+  "defect": "MISSING_ASSETS",
+  "field": "",
+  "clean": "18 x Fan coil unit on L47",
+  "messy": "not in the register",
+  "note": "L47: every fan coil unit missing",
+  "level": "L47",
+  "type": "Fan coil unit",
+  "removed": 18,
+  "row": ""
+ },
+ {
+  "defect": "MISSING_ASSETS",
+  "field": "",
+  "clean": "2 x Fire hose reel on L33",
+  "messy": "not in the register",
+  "note": "L33: every fire hose reel missing",
+  "level": "L33",
+  "type": "Fire hose reel",
+  "removed": 2,
+  "row": ""
+ },
+ {
+  "defect": "DUP_TAG",
+  "field": "AssetTag",
+  "clean": "PDT-L17-FCU-008",
+  "messy": "PDT-L17-FCU-007",
+  "note": "same tag as PDT-L17-FCU-007",
+  "type": "Fan coil unit",
+  "row": 445
+ },
+ {
+  "defect": "DUP_TAG",
+  "field": "AssetTag",
+  "clean": "PDT-L62-FCU-004",
+  "messy": "PDT-L62-FCU-003",
+  "note": "same tag as PDT-L62-FCU-003",
+  "type": "Fan coil unit",
+  "row": 1396
+ },
+ {
+  "defect": "DUP_TAG",
+  "field": "AssetTag",
+  "clean": "PDT-L70-FCU-015",
+  "messy": "PDT-L70-FCU-014",
+  "note": "same tag as PDT-L70-FCU-014",
+  "type": "Fan coil unit",
+  "row": 1560
+ },
+ {
+  "defect": "DUP_TAG",
+  "field": "AssetTag",
+  "clean": "PDT-L04-FCU-008",
+  "messy": "PDT-L04-FCU-007",
+  "note": "same tag as PDT-L04-FCU-007",
+  "type": "Fan coil unit",
+  "row": 157
+ },
+ {
+  "defect": "DUP_TAG",
+  "field": "AssetTag",
+  "clean": "PDT-L44-FCU-004",
+  "messy": "PDT-L44-FCU-003",
+  "note": "same tag as PDT-L44-FCU-003",
+  "type": "Fan coil unit",
+  "row": 1035
+ },
+ {
+  "defect": "DUP_TAG",
+  "field": "AssetTag",
+  "clean": "PDT-L42-FCU-008",
+  "messy": "PDT-L42-FCU-007",
+  "note": "same tag as PDT-L42-FCU-007",
+  "type": "Fan coil unit",
+  "row": 995
+ },
+ {
+  "defect": "DUP_TAG",
+  "field": "AssetTag",
+  "clean": "PDT-L06-FCU-016",
+  "messy": "PDT-L06-FCU-015",
+  "note": "same tag as PDT-L06-FCU-015",
+  "type": "Fan coil unit",
+  "row": 209
+ },
+ {
+  "defect": "DUP_TAG",
+  "field": "AssetTag",
+  "clean": "PDT-L37-FCU-004",
+  "messy": "PDT-L37-FCU-003",
+  "note": "same tag as PDT-L37-FCU-003",
+  "type": "Fan coil unit",
+  "row": 880
+ },
+ {
+  "defect": "TAG_FORMAT",
+  "field": "AssetTag",
+  "clean": "PDT-RF-BMU-01",
+  "messy": "pdt-rf-bmu-01",
+  "note": "",
+  "type": "Building maintenance unit",
+  "row": 46
+ },
+ {
+  "defect": "TAG_FORMAT",
+  "field": "AssetTag",
+  "clean": "PDT-L37-FCU-016",
+  "messy": " PDT-L37-FCU-016 ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 892
+ },
+ {
+  "defect": "TAG_FORMAT",
+  "field": "AssetTag",
+  "clean": "PDT-L25-FCU-006",
+  "messy": "PDT-L25-FCU-006 ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 619
+ },
+ {
+  "defect": "TAG_FORMAT",
+  "field": "AssetTag",
+  "clean": "PDT-L63-SMDB-01",
+  "messy": "pdt-l63-smdb-01",
+  "note": "",
+  "type": "Sub-main distribution board",
+  "row": 1430
+ },
+ {
+  "defect": "TAG_FORMAT",
+  "field": "AssetTag",
+  "clean": "PDT-L28-FCU-012",
+  "messy": " PDT-L28-FCU-012 ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 691
+ },
+ {
+  "defect": "TAG_FORMAT",
+  "field": "AssetTag",
+  "clean": "PDT-L67-SMDB-01",
+  "messy": "PDT-L67-SMDB-01 ",
+  "note": "",
+  "type": "Sub-main distribution board",
+  "row": 1507
+ },
+ {
+  "defect": "TAG_FORMAT",
+  "field": "AssetTag",
+  "clean": "PDT-L65-FCU-008",
+  "messy": " PDT-L65-FCU-008 ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1457
+ },
+ {
+  "defect": "TAG_FORMAT",
+  "field": "AssetTag",
+  "clean": "PDT-L48-FHR-02",
+  "messy": "PDT-L48-FHR-02 ",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1121
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L20",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 508
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L08",
+  "messy": "",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 257
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L11",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 319
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L41",
+  "messy": "",
+  "note": "",
+  "type": "Sprinkler zone control valve",
+  "row": 986
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L08",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 254
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L23",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 577
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L42",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 988
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L79",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1729
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L37",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 878
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L49",
+  "messy": "",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1143
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L09",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 275
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L49",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1136
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L08",
+  "messy": "",
+  "note": "",
+  "type": "Sprinkler zone control valve",
+  "row": 258
+ },
+ {
+  "defect": "MISSING_LEVEL",
+  "field": "Level",
+  "clean": "L78",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1699
+ },
+ {
+  "defect": "BAD_LEVEL",
+  "field": "Level",
+  "clean": "L23",
+  "messy": "L83",
+  "note": "level does not exist in an 80-floor tower",
+  "type": "Fan coil unit",
+  "row": 572
+ },
+ {
+  "defect": "BAD_LEVEL",
+  "field": "Level",
+  "clean": "L10",
+  "messy": "L00",
+  "note": "level does not exist in an 80-floor tower",
+  "type": "Fan coil unit",
+  "row": 284
+ },
+ {
+  "defect": "BAD_LEVEL",
+  "field": "Level",
+  "clean": "L72",
+  "messy": "L91",
+  "note": "level does not exist in an 80-floor tower",
+  "type": "Fire hose reel",
+  "row": 1600
+ },
+ {
+  "defect": "BAD_LEVEL",
+  "field": "Level",
+  "clean": "L12",
+  "messy": "L800",
+  "note": "level does not exist in an 80-floor tower",
+  "type": "Sub-main distribution board",
+  "row": 348
+ },
+ {
+  "defect": "LEVEL_FORMAT",
+  "field": "Level",
+  "clean": "L21",
+  "messy": "21F",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 543
+ },
+ {
+  "defect": "LEVEL_FORMAT",
+  "field": "Level",
+  "clean": "L22",
+  "messy": "Floor 22",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 564
+ },
+ {
+  "defect": "LEVEL_FORMAT",
+  "field": "Level",
+  "clean": "L30",
+  "messy": "Floor 30",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 743
+ },
+ {
+  "defect": "LEVEL_FORMAT",
+  "field": "Level",
+  "clean": "L10",
+  "messy": "10F",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 287
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 616
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan coil unit ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 768
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1027
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan coil unit ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 584
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan Coil",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1453
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1688
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan Coil",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 974
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1519
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 629
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "F.C.U",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 891
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan coil unit ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1387
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "F.C.U",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1641
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 862
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1594
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "F.C.U",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 932
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1147
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 272
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "F.C.U",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1706
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1078
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1690
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 729
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "F.C.U",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1508
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan coil unit ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1258
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 805
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan coil unit ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1705
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1388
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1709
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 283
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan coil unit ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1134
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 114
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 761
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan Coil",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 206
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 737
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 188
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 344
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan coil unit ",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 631
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1347
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 495
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1612
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FAN COIL UNIT",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 914
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "F.C.U",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 240
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "F.C.U",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1670
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 792
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "Fan Coil",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 197
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fan coil unit",
+  "messy": "FCU (ceiling)",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 782
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fire hose reel",
+  "messy": "Hose reel",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1312
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fire hose reel",
+  "messy": "Fire Hose Reel",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1164
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fire hose reel",
+  "messy": "Fire Hose Reel",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1638
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fire hose reel",
+  "messy": "Fire Hose Reel",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1187
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fire hose reel",
+  "messy": "Hose reel",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1028
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fire hose reel",
+  "messy": "Hose reel",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 279
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fire hose reel",
+  "messy": "FHR",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 434
+ },
+ {
+  "defect": "TYPE_DRIFT",
+  "field": "AssetType",
+  "clean": "Fire hose reel",
+  "messy": "Fire Hose Reel",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1094
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-422166",
+  "messy": "0",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 888
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-573949",
+  "messy": "TBC",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 276
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-229293",
+  "messy": "TBA",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 165
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-758086",
+  "messy": "0",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1019
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-173533",
+  "messy": "0",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1148
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-571933",
+  "messy": "0",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1322
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-499196",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 360
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-393160",
+  "messy": "-",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 315
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-710480",
+  "messy": "0",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1692
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VF23-842749",
+  "messy": "TBA",
+  "note": "",
+  "type": "Sub-main distribution board",
+  "row": 1678
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-713768",
+  "messy": "N/A",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 112
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-174537",
+  "messy": "N/A",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 883
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-769621",
+  "messy": "TBA",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 241
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-990602",
+  "messy": "TBC",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 732
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-493831",
+  "messy": "N/A",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1282
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VD23-338666",
+  "messy": "",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 676
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-730268",
+  "messy": "N/A",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1139
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-624170",
+  "messy": "N/A",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1589
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VB23-214452",
+  "messy": "",
+  "note": "",
+  "type": "Chilled water pump",
+  "row": 9
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-866307",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1357
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VE23-333576",
+  "messy": "TBC",
+  "note": "",
+  "type": "Lift",
+  "row": 70
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA26-250435",
+  "messy": "-",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 151
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-725034",
+  "messy": "TBA",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 869
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VD23-155196",
+  "messy": "TBA",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1351
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VB23-941861",
+  "messy": "0",
+  "note": "",
+  "type": "Water tank",
+  "row": 48
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-495193",
+  "messy": "0",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1723
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-341330",
+  "messy": "0",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1045
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-619743",
+  "messy": "-",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 327
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-404575",
+  "messy": "0",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 418
+ },
+ {
+  "defect": "SERIAL_PLACEHOLDER",
+  "field": "SerialNumber",
+  "clean": "VA23-287338",
+  "messy": "TBC",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1445
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1260
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 991
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 966
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1182
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "B",
+  "messy": "",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1274
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1567
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "A",
+  "messy": "",
+  "note": "",
+  "type": "Sprinkler zone control valve",
+  "row": 303
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 263
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1107
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 973
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1687
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "A",
+  "messy": "",
+  "note": "",
+  "type": "Sprinkler zone control valve",
+  "row": 1696
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1645
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 842
+ },
+ {
+  "defect": "MISSING_CRITICALITY",
+  "field": "Criticality",
+  "clean": "C",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1056
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Monthly",
+  "messy": "",
+  "note": "",
+  "type": "Sprinkler zone control valve",
+  "row": 414
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Monthly",
+  "messy": "",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1504
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Annual",
+  "messy": "",
+  "note": "",
+  "type": "Sub-main distribution board",
+  "row": 415
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Monthly",
+  "messy": "",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 677
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Quarterly",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1585
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Quarterly",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1240
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Quarterly",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 814
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Quarterly",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 362
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Quarterly",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 207
+ },
+ {
+  "defect": "MISSING_PPM",
+  "field": "PPMFrequency",
+  "clean": "Quarterly",
+  "messy": "",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 628
+ },
+ {
+  "defect": "WARRANTY_BEFORE_INSTALL",
+  "field": "WarrantyEnd",
+  "clean": "2026-03-31",
+  "messy": "2023-03-13",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1596
+ },
+ {
+  "defect": "WARRANTY_BEFORE_INSTALL",
+  "field": "WarrantyEnd",
+  "clean": "2026-03-31",
+  "messy": "2023-03-22",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1616
+ },
+ {
+  "defect": "WARRANTY_BEFORE_INSTALL",
+  "field": "WarrantyEnd",
+  "clean": "2027-06-05",
+  "messy": "2024-12-09",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1239
+ },
+ {
+  "defect": "WARRANTY_BEFORE_INSTALL",
+  "field": "WarrantyEnd",
+  "clean": "2026-03-31",
+  "messy": "2023-08-29",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1554
+ },
+ {
+  "defect": "WARRANTY_BEFORE_INSTALL",
+  "field": "WarrantyEnd",
+  "clean": "2026-03-31",
+  "messy": "2023-08-06",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 1562
+ },
+ {
+  "defect": "FUTURE_INSTALL",
+  "field": "InstallDate",
+  "clean": "2023-09-30",
+  "messy": "2027-09-30",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1106
+ },
+ {
+  "defect": "FUTURE_INSTALL",
+  "field": "InstallDate",
+  "clean": "2023-08-13",
+  "messy": "2032-08-13",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 648
+ },
+ {
+  "defect": "FUTURE_INSTALL",
+  "field": "InstallDate",
+  "clean": "2023-08-20",
+  "messy": "2027-08-20",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 786
+ },
+ {
+  "defect": "IMPOSSIBLE_DATE",
+  "field": "InstallDate",
+  "clean": "2023-08-17",
+  "messy": "2023-02-30",
+  "note": "",
+  "type": "Sub-main distribution board",
+  "row": 701
+ },
+ {
+  "defect": "IMPOSSIBLE_DATE",
+  "field": "InstallDate",
+  "clean": "2023-10-27",
+  "messy": "2023-13-04",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1283
+ },
+ {
+  "defect": "IMPOSSIBLE_DATE",
+  "field": "InstallDate",
+  "clean": "2023-07-12",
+  "messy": "2023-09-31",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 435
+ },
+ {
+  "defect": "IMPOSSIBLE_DATE",
+  "field": "InstallDate",
+  "clean": "2023-09-05",
+  "messy": "2023-11-00",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 846
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2023-11-03",
+  "messy": "03/11/2023",
+  "note": "same date, different format",
+  "type": "Fan coil unit",
+  "row": 1386
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2026-06-21",
+  "messy": "21/06/2026",
+  "note": "same date, different format",
+  "type": "Fan coil unit",
+  "row": 1743
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2023-10-14",
+  "messy": "14/10/2023",
+  "note": "same date, different format",
+  "type": "Fan coil unit",
+  "row": 1170
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2023-08-01",
+  "messy": "01/08/2023",
+  "note": "same date, different format",
+  "type": "Fan coil unit",
+  "row": 594
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2023-08-30",
+  "messy": "30/08/2023",
+  "note": "same date, different format",
+  "type": "Fan coil unit",
+  "row": 825
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2023-06-19",
+  "messy": "19/06/2023",
+  "note": "same date, different format",
+  "type": "Fan coil unit",
+  "row": 181
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2023-06-21",
+  "messy": "21/06/2023",
+  "note": "same date, different format",
+  "type": "Sprinkler zone control valve",
+  "row": 192
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2023-10-28",
+  "messy": "28/10/2023",
+  "note": "same date, different format",
+  "type": "Fire hose reel",
+  "row": 1331
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2023-06-07",
+  "messy": "07/06/2023",
+  "note": "same date, different format",
+  "type": "Sub-main distribution board",
+  "row": 105
+ },
+ {
+  "defect": "DATE_FORMAT",
+  "field": "InstallDate",
+  "clean": "2023-07-10",
+  "messy": "10/07/2023",
+  "note": "same date, different format",
+  "type": "Fan coil unit",
+  "row": 335
+ },
+ {
+  "defect": "ORPHAN_PARENT",
+  "field": "ParentTag",
+  "clean": "PDT-GF-MDB-01",
+  "messy": "PDT-GF-MDB-09",
+  "note": "parent tag not in the register",
+  "type": "Sub-main distribution board",
+  "row": 75
+ },
+ {
+  "defect": "ORPHAN_PARENT",
+  "field": "ParentTag",
+  "clean": "PDT-L40-PHE-03",
+  "messy": "PDT-L40-PHE-09",
+  "note": "parent tag not in the register",
+  "type": "Fan coil unit",
+  "row": 1278
+ },
+ {
+  "defect": "ORPHAN_PARENT",
+  "field": "ParentTag",
+  "clean": "PDT-L40-PHE-03",
+  "messy": "PDT-L40-PHE-09",
+  "note": "parent tag not in the register",
+  "type": "Fan coil unit",
+  "row": 1033
+ },
+ {
+  "defect": "ORPHAN_PARENT",
+  "field": "ParentTag",
+  "clean": "PDT-L40-PHE-03",
+  "messy": "PDT-L40-PHE-3",
+  "note": "parent tag not in the register",
+  "type": "Fan coil unit",
+  "row": 1214
+ },
+ {
+  "defect": "ORPHAN_PARENT",
+  "field": "ParentTag",
+  "clean": "PDT-L40-PHE-03",
+  "messy": "PDT-L40-PHE-09",
+  "note": "parent tag not in the register",
+  "type": "Fan coil unit",
+  "row": 1299
+ },
+ {
+  "defect": "ORPHAN_PARENT",
+  "field": "ParentTag",
+  "clean": "PDT-GF-FP-01",
+  "messy": "PDT-GF-FP-09",
+  "note": "parent tag not in the register",
+  "type": "Fire hose reel",
+  "row": 390
+ },
+ {
+  "defect": "ORPHAN_PARENT",
+  "field": "ParentTag",
+  "clean": "PDT-L40-PHE-03",
+  "messy": "PDT-L40-PHE-3",
+  "note": "parent tag not in the register",
+  "type": "Fan coil unit",
+  "row": 1710
+ },
+ {
+  "defect": "ORPHAN_PARENT",
+  "field": "ParentTag",
+  "clean": "PDT-GF-PHE-01",
+  "messy": "PDT-GF-PHE-1",
+  "note": "parent tag not in the register",
+  "type": "Fan coil unit",
+  "row": 484
+ },
+ {
+  "defect": "WRONG_SYSTEM",
+  "field": "System",
+  "clean": "HVAC",
+  "messy": "Plumbing",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 845
+ },
+ {
+  "defect": "WRONG_SYSTEM",
+  "field": "System",
+  "clean": "Fire",
+  "messy": "HVAC",
+  "note": "",
+  "type": "Fire hose reel",
+  "row": 655
+ },
+ {
+  "defect": "WRONG_SYSTEM",
+  "field": "System",
+  "clean": "HVAC",
+  "messy": "Plumbing",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 989
+ },
+ {
+  "defect": "WRONG_SYSTEM",
+  "field": "System",
+  "clean": "HVAC",
+  "messy": "Plumbing",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 908
+ },
+ {
+  "defect": "WRONG_SYSTEM",
+  "field": "System",
+  "clean": "HVAC",
+  "messy": "Plumbing",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1668
+ },
+ {
+  "defect": "WRONG_SYSTEM",
+  "field": "System",
+  "clean": "HVAC",
+  "messy": "Plumbing",
+  "note": "",
+  "type": "Fan coil unit",
+  "row": 1079
+ },
+ {
+  "defect": "DUP_ROW",
+  "field": "",
+  "clean": "",
+  "messy": "entire row repeated",
+  "note": "copy of PDT-L13-FHR-01",
+  "row": 368
+ },
+ {
+  "defect": "DUP_ROW",
+  "field": "",
+  "clean": "",
+  "messy": "entire row repeated",
+  "note": "copy of PDT-L36-SMDB-01",
+  "row": 876
+ },
+ {
+  "defect": "DUP_ROW",
+  "field": "",
+  "clean": "",
+  "messy": "entire row repeated",
+  "note": "copy of PDT-L41-FCU-005",
+  "row": 970
+ },
+ {
+  "defect": "DUP_ROW",
+  "field": "",
+  "clean": "",
+  "messy": "entire row repeated",
+  "note": "copy of PDT-L65-FCU-009",
+  "row": 1459
+ },
+ {
+  "defect": "DUP_ROW",
+  "field": "",
+  "clean": "",
+  "messy": "entire row repeated",
+  "note": "copy of PDT-L09-FCU-010",
+  "row": 270
+ },
+ {
+  "defect": "DUP_ROW",
+  "field": "",
+  "clean": "",
+  "messy": "entire row repeated",
+  "note": "copy of PDT-L61-FCU-006",
+  "row": 1379
+ }
+]
