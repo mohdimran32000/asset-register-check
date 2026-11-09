@@ -8,17 +8,14 @@
 <meta property="og:title" content="Is your asset register ready for AI?">
 <meta property="og:description" content="Drop in a CSV. It runs in your browser and nothing is uploaded.">
 <meta property="og:image" content="https://mohdimran32000.github.io/asset-register-check/preview.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect x=%221.5%22 y=%221.5%22 width=%2213%22 height=%2213%22 fill=%22%23fbfaf6%22 stroke=%22%2316181d%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M4 8.4l2.4 2.3L12 5%22 stroke=%22%2316181d%22 stroke-width=%221.8%22 fill=%22none%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect x=%221.5%22 y=%221.5%22 width=%2213%22 height=%2213%22 fill=%22%23ffffff%22 stroke=%22%2316181d%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M4 8.4l2.4 2.3L12 5%22 stroke=%22%2316181d%22 stroke-width=%221.8%22 fill=%22none%22/%3E%3C/svg%3E">
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
 :root {
-  --paper: #fbfaf6; --ink: #16181d; --ink-2: #4b4f58; --ink-3: #82868e; --rule: #d9d6cc; --hair: #e8e5dc;
+  --paper: #ffffff; --ink: #16181d; --ink-2: #4b4f58; --ink-3: #82868e; --rule: #d9d6cc; --hair: #e8e5dc;
   --mark: #ffd84d; --fail: #c4231c; --pass: #0f7a3d; --code: #f0eee6; --grid: rgba(22,24,29,.05);
   --sans: "Barlow", "Segoe UI", system-ui, sans-serif; --cond: "Barlow Condensed", "Arial Narrow", "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", Consolas, ui-monospace, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --paper: #121417; --ink: #ecebe6; --ink-2: #b9bbc0; --ink-3: #868a92; --rule: #343840; --hair: #24272d; --mark: #e8b923; --fail: #ff6b5e; --pass: #4cc38a; --code: #1c1f24; --grid: rgba(236,235,230,.05); }
 }
 :root[data-theme="dark"] { --paper: #121417; --ink: #ecebe6; --ink-2: #b9bbc0; --ink-3: #868a92; --rule: #343840; --hair: #24272d; --mark: #e8b923; --fail: #ff6b5e; --pass: #4cc38a; --code: #1c1f24; --grid: rgba(236,235,230,.05); }
 * { box-sizing: border-box; }
@@ -28,7 +25,6 @@ body { background: var(--paper); color: var(--ink); font: 400 16.5px/1.5 var(--s
 button, select, input { font: inherit; color: inherit; }
 .mono { font-family: var(--mono); }
 .mark { background: linear-gradient(transparent 52%, var(--mark) 52%, var(--mark) 92%, transparent 92%); padding: 0 2px; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .mark { background: none; color: var(--mark); } }
 :root[data-theme="dark"] .mark { background: none; color: var(--mark); }
 
 /* title strip, like the title block on a drawing */
@@ -232,7 +228,7 @@ details[open] .open-mark { color: var(--ink); }
 
   try { const t = localStorage.getItem('arc-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   $('#theme').onclick = () => {
-    const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const cur = document.documentElement.dataset.theme || 'light';
     const next = cur === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem('arc-theme', next); } catch (e) {}
