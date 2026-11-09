@@ -1,0 +1,2 @@
+Barlow, Barlow Condensed (Jeremy Tribby) and IBM Plex Mono (IBM) are licensed under the SIL Open Font License 1.1.
+https://openfontlicense.org  ·  Files are the latin subsets served by Google Fonts, bundled so the page makes no third-party requests.

@@ -8,164 +8,212 @@
 <meta property="og:title" content="Is your asset register ready for AI?">
 <meta property="og:description" content="Drop in a CSV. It runs in your browser and nothing is uploaded.">
 <meta property="og:image" content="https://mohdimran32000.github.io/asset-register-check/preview.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect x=%222%22 y=%222%22 width=%2212%22 height=%2212%22 rx=%222%22 fill=%22%23f1b54b%22/%3E%3Cpath d=%22M5 8.2l2 2 4-4.4%22 stroke=%22%23131720%22 stroke-width=%221.8%22 fill=%22none%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect x=%221.5%22 y=%221.5%22 width=%2213%22 height=%2213%22 fill=%22%23fbfaf6%22 stroke=%22%2316181d%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M4 8.4l2.4 2.3L12 5%22 stroke=%22%2316181d%22 stroke-width=%221.8%22 fill=%22none%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 :root {
-  --bg: #f6f4ef; --panel: #ffffff; --ink: #131720; --ink-2: #4a5160; --ink-3: #7b8190; --line: #e3dfd6;
-  --accent: #b7791f; --accent-soft: #fbf1df; --good: #1f7a4d; --good-soft: #e3f3ea; --warn: #9a6200; --warn-soft: #fbefd7;
-  --bad: #b3261e; --bad-soft: #fbe5e3; --code: #f0ede6; --shadow: 0 1px 2px rgba(19,23,32,.06), 0 8px 24px rgba(19,23,32,.06);
+  --paper: #fbfaf6; --ink: #16181d; --ink-2: #4b4f58; --ink-3: #82868e; --rule: #d9d6cc; --hair: #e8e5dc;
+  --mark: #ffd84d; --fail: #c4231c; --pass: #0f7a3d; --code: #f0eee6; --grid: rgba(22,24,29,.05);
+  --sans: "Barlow", "Segoe UI", system-ui, sans-serif; --cond: "Barlow Condensed", "Arial Narrow", "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", Consolas, ui-monospace, monospace;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f1218; --panel: #171b23; --ink: #eef0f4; --ink-2: #b6bcc8; --ink-3: #868d9b; --line: #272d38;
-    --accent: #f1b54b; --accent-soft: #2a2416; --good: #5fd39a; --good-soft: #15291f; --warn: #f1b54b; --warn-soft: #2a2416;
-    --bad: #ff8a80; --bad-soft: #2e1817; --code: #1f2430; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
-  }
+  :root:not([data-theme="light"]) { --paper: #121417; --ink: #ecebe6; --ink-2: #b9bbc0; --ink-3: #868a92; --rule: #343840; --hair: #24272d; --mark: #e8b923; --fail: #ff6b5e; --pass: #4cc38a; --code: #1c1f24; --grid: rgba(236,235,230,.05); }
 }
-:root[data-theme="dark"] {
-  --bg: #0f1218; --panel: #171b23; --ink: #eef0f4; --ink-2: #b6bcc8; --ink-3: #868d9b; --line: #272d38;
-  --accent: #f1b54b; --accent-soft: #2a2416; --good: #5fd39a; --good-soft: #15291f; --warn: #f1b54b; --warn-soft: #2a2416;
-  --bad: #ff8a80; --bad-soft: #2e1817; --code: #1f2430; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
-}
+:root[data-theme="dark"] { --paper: #121417; --ink: #ecebe6; --ink-2: #b9bbc0; --ink-3: #868a92; --rule: #343840; --hair: #24272d; --mark: #e8b923; --fail: #ff6b5e; --pass: #4cc38a; --code: #1c1f24; --grid: rgba(236,235,230,.05); }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
-body { background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 28px 16px 64px; }
-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
-.kicker { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-h1 { font-size: clamp(26px, 4vw, 38px); line-height: 1.1; margin: 6px 0 6px; letter-spacing: -.02em; }
-.sub { color: var(--ink-2); margin: 0; max-width: 640px; }
-.privacy { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--good); background: var(--good-soft); padding: 6px 10px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
-.grid { display: grid; grid-template-columns: 320px 1fr; gap: 18px; align-items: start; }
-@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
-.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); }
-.pad { padding: 18px; }
-h2 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px; font-weight: 700; }
-.drop { display: block; border: 2px dashed var(--line); border-radius: 12px; padding: 22px 14px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
-.drop:hover, .drop.over { border-color: var(--accent); background: var(--accent-soft); }
-.drop b { display: block; font-size: 15px; margin-bottom: 4px; }
-.drop span { color: var(--ink-3); font-size: 13px; }
-.or { text-align: center; color: var(--ink-3); font-size: 12px; margin: 12px 0 10px; }
-.samples { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-button { font: inherit; cursor: pointer; }
-.btn { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 10px; padding: 9px 10px; font-weight: 600; font-size: 13.5px; text-align: left; }
-.btn:hover { border-color: var(--accent); }
-.btn small { display: block; font-weight: 400; color: var(--ink-3); font-size: 12px; }
-.btn.on { border-color: var(--accent); background: var(--accent-soft); }
-.file { margin-top: 14px; font-size: 13px; color: var(--ink-2); word-break: break-all; }
-.map { margin-top: 16px; display: none; }
+body { background: var(--paper); color: var(--ink); font: 400 16.5px/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+.sheet { max-width: 1160px; margin: 0 auto; padding: 0 20px 56px; }
+button, select, input { font: inherit; color: inherit; }
+.mono { font-family: var(--mono); }
+.mark { background: linear-gradient(transparent 52%, var(--mark) 52%, var(--mark) 92%, transparent 92%); padding: 0 2px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .mark { background: none; color: var(--mark); } }
+:root[data-theme="dark"] .mark { background: none; color: var(--mark); }
+
+/* title strip, like the title block on a drawing */
+.strip { display: grid; grid-template-columns: 1fr auto auto; border-bottom: 1px solid var(--ink); font-family: var(--cond); font-weight: 600; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+.strip > div { padding: 12px 16px; border-left: 1px solid var(--ink); }
+.strip > div:first-child { border-left: 0; padding-left: 0; }
+.strip .muted { color: var(--ink-3); font-weight: 500; }
+@media (max-width: 640px) { .strip { grid-template-columns: 1fr; } .strip > div { border-left: 0; padding-left: 0; } .strip > div + div { border-top: 1px solid var(--rule); padding: 8px 0; } }
+
+.hero { padding: 36px 0 26px; border-bottom: 2px solid var(--ink); display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: end; }
+@media (max-width: 860px) { .hero { grid-template-columns: 1fr; gap: 14px; } }
+h1 { font-family: var(--cond); font-weight: 700; font-size: clamp(44px, 7vw, 84px); line-height: .95; letter-spacing: -.01em; margin: 0; }
+.lede { margin: 0; color: var(--ink-2); font-size: 17px; }
+.privacy { font-size: 15px; color: var(--ink-2); border-left: 3px solid var(--pass); padding-left: 12px; }
+.privacy b { color: var(--ink); font-weight: 600; }
+
+/* sections */
+.cols { display: grid; grid-template-columns: 300px 1fr; gap: 0; }
+@media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
+.col-l { border-right: 1px solid var(--rule); padding: 22px 24px 22px 0; }
+.col-r { padding: 22px 0 22px 28px; min-width: 0; }
+@media (max-width: 860px) { .col-l { border-right: 0; border-bottom: 1px solid var(--rule); padding: 22px 0; } .col-r { padding: 22px 0; } }
+.sec { display: flex; align-items: baseline; gap: 12px; margin: 0 0 14px; font-family: var(--cond); font-weight: 600; font-size: 15px; letter-spacing: .1em; text-transform: uppercase; }
+.sec .no { font-family: var(--mono); font-weight: 500; font-size: 13px; letter-spacing: 0; border: 1px solid var(--ink); padding: 1px 6px; }
+.sec .rule { flex: 1; height: 1px; background: var(--rule); align-self: center; }
+
+.drop { display: block; border: 1.5px dashed var(--ink-3); padding: 26px 16px; text-align: center; cursor: pointer;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 16px 16px; transition: border-color .15s; }
+.drop:hover, .drop.over { border-color: var(--ink); }
+.drop b { display: block; font-family: var(--cond); font-weight: 600; font-size: 22px; letter-spacing: .01em; }
+.drop span { font-size: 14px; color: var(--ink-2); }
+.samples { margin-top: 16px; border-top: 1px solid var(--rule); }
+.sample { display: grid; grid-template-columns: 1fr auto; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--rule); padding: 11px 0; cursor: pointer; }
+.sample:hover .t, .sample.on .t { text-decoration: underline; text-underline-offset: 3px; }
+.sample .t { font-weight: 600; }
+.sample .s { grid-column: 1; font-size: 13.5px; color: var(--ink-3); }
+.sample .a { grid-row: 1 / 3; grid-column: 2; align-self: center; font-family: var(--mono); color: var(--ink-3); }
+.sample.on .a { color: var(--ink); }
+.small-note { font-size: 13px; color: var(--ink-3); margin: 8px 0 0; }
+.file { margin-top: 14px; font-family: var(--mono); font-size: 13px; color: var(--ink-2); overflow-wrap: anywhere; }
+.map { margin-top: 18px; display: none; border-top: 1px solid var(--rule); }
 .map.show { display: block; }
-.map table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.map td { padding: 4px 0; vertical-align: middle; }
-.map td:first-child { color: var(--ink-2); padding-right: 8px; white-space: nowrap; }
-.map select { width: 100%; font: inherit; font-size: 13px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); color: var(--ink); }
-.req { color: var(--accent); }
-.empty { padding: 56px 24px; text-align: center; color: var(--ink-3); }
-.empty b { color: var(--ink); display: block; font-size: 18px; margin-bottom: 6px; }
-.top { display: grid; grid-template-columns: 220px 1fr; gap: 18px; padding: 20px; align-items: center; }
-@media (max-width: 600px) { .top { grid-template-columns: 1fr; } }
-.score { text-align: center; }
-.score .n { font-size: 64px; font-weight: 800; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; }
-.score .of { color: var(--ink-3); font-size: 14px; margin-top: 4px; }
-.verdict { display: inline-block; margin-top: 10px; padding: 5px 12px; border-radius: 999px; font-weight: 700; font-size: 14px; }
-.v-Ready { color: var(--good); background: var(--good-soft); }
-.v-Close { color: var(--warn); background: var(--warn-soft); }
-.v-Not { color: var(--bad); background: var(--bad-soft); }
-.meter { height: 10px; border-radius: 99px; background: var(--code); overflow: hidden; margin-top: 12px; }
-.meter i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .9s cubic-bezier(.2,.8,.2,1); }
-.facts { font-size: 15px; color: var(--ink-2); }
-.facts p { margin: 0 0 6px; }
-.facts strong { color: var(--ink); }
-.dims { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; padding: 0 20px 20px; }
-@media (max-width: 700px) { .dims { grid-template-columns: repeat(2, 1fr); } }
-.dim { border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
-.dim .k { font-size: 12px; color: var(--ink-3); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
-.dim .v { font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; margin-top: 2px; }
-.dim .v.zero { color: var(--good); }
-.dim .s { font-size: 12px; color: var(--ink-3); }
-.section { margin-top: 18px; }
-.first { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-@media (max-width: 760px) { .first { grid-template-columns: 1fr; } }
-.fix { padding: 16px; border-left: 4px solid var(--accent); }
-.fix .c { font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; }
-.fix .t { font-weight: 700; margin: 2px 0 6px; }
-.fix .w { color: var(--ink-2); font-size: 14px; margin: 0; }
-details.check { border-top: 1px solid var(--line); }
-details.check:first-of-type { border-top: 0; }
-details.check summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: center; padding: 14px 18px; }
+.map > summary { list-style: none; cursor: pointer; padding: 10px 0; font-size: 14.5px; color: var(--ink-2); }
+.map > summary::-webkit-details-marker { display: none; }
+.map > summary b { color: var(--ink); font-weight: 600; }
+.map > summary u { text-underline-offset: 3px; }
+.map table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.map td { padding: 5px 0; border-bottom: 1px solid var(--hair); }
+.map td:first-child { color: var(--ink-2); padding-right: 10px; white-space: nowrap; }
+.map select { width: 100%; font-size: 13.5px; padding: 3px 4px; border: 1px solid var(--rule); border-radius: 0; background: var(--paper); }
+.req { color: var(--fail); }
+
+.empty { border: 1px solid var(--rule); padding: 40px 28px; color: var(--ink-2); }
+.empty b { display: block; color: var(--ink); font-family: var(--cond); font-weight: 600; font-size: 24px; margin-bottom: 6px; }
+
+/* result */
+.result { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+@media (max-width: 600px) { .result { grid-template-columns: 1fr; gap: 14px; } }
+.scorebox .lab { font-family: var(--cond); font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.scorebox .n { font-family: var(--cond); font-weight: 700; font-size: 132px; line-height: .85; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.scorebox .n small { font-size: 28px; color: var(--ink-3); font-weight: 600; letter-spacing: 0; margin-left: 4px; }
+.verdict { display: inline-block; margin-top: 12px; border: 2px solid currentColor; padding: 4px 12px 3px; font-family: var(--cond); font-weight: 700; font-size: 20px; letter-spacing: .12em; text-transform: uppercase; }
+.v-Ready { color: var(--pass); } .v-Close { color: #a86500; } .v-Not { color: var(--fail); }
+.facts p { margin: 0 0 6px; font-size: 17px; color: var(--ink-2); }
+.facts p b { color: var(--ink); font-weight: 600; }
+.bar { margin-top: 14px; height: 12px; border: 1px solid var(--ink); position: relative; }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: repeating-linear-gradient(-45deg, var(--ink) 0 2px, transparent 2px 6px); transition: width .9s cubic-bezier(.2,.8,.2,1); }
+.bar .ticks { position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), var(--rule) calc(10% - 1px) 10%); pointer-events: none; }
+
+.dims { width: 100%; border-collapse: collapse; margin-top: 24px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.dims th { font-family: var(--cond); font-weight: 600; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); text-align: left; padding: 10px 12px 2px; }
+.dims td { font-family: var(--cond); font-weight: 700; font-size: 38px; padding: 0 12px 8px; font-variant-numeric: tabular-nums; }
+.dims td small { display: block; font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--ink-3); margin-top: -4px; }
+.dims th + th, .dims td + td { border-left: 1px solid var(--rule); }
+.dims td.zero { color: var(--pass); }
+@media (max-width: 600px) { .dims th { font-size: 10.5px; padding: 8px 6px 2px; } .dims td { font-size: 26px; padding: 0 6px 6px; } .dims td small { font-size: 11px; } }
+
+.cert { margin-top: 26px; border: 3px double var(--ink); padding: 16px 18px; display: none; }
+.cert.show { display: block; }
+.cert h3 { margin: 0 0 10px; font-family: var(--cond); font-weight: 600; font-size: 15px; letter-spacing: .1em; text-transform: uppercase; }
+.certnums { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 0; margin-bottom: 10px; }
+.certnums div { padding: 0 22px 0 0; margin-right: 22px; border-right: 1px solid var(--rule); }
+.certnums div:last-child { border-right: 0; }
+.certnums b { display: block; font-family: var(--cond); font-weight: 700; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; }
+.certnums span { font-size: 13.5px; color: var(--ink-3); }
+@media (max-width: 600px) { .certnums { grid-template-columns: repeat(2, auto); row-gap: 10px; } .certnums div:nth-child(2) { border-right: 0; } }
+.cert p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.cert p + p { margin-top: 6px; }
+
+/* findings, laid out like a snag list */
+.snag-head, details.check summary { display: grid; grid-template-columns: 58px 1fr 84px 128px; gap: 14px; align-items: baseline; }
+.snag-head { margin-top: 30px; padding: 8px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); font-family: var(--cond); font-weight: 600; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.snag-head .r, .cnt { text-align: right; }
+details.check { border-bottom: 1px solid var(--rule); }
+details.check summary { list-style: none; cursor: pointer; padding: 13px 0; }
 details.check summary::-webkit-details-marker { display: none; }
-.cnt { font-weight: 800; font-size: 20px; font-variant-numeric: tabular-nums; text-align: right; }
-.ct { font-weight: 650; }
-.cw { color: var(--ink-3); font-size: 13.5px; }
-.tagdim { font-size: 11.5px; padding: 3px 8px; border-radius: 99px; background: var(--code); color: var(--ink-2); font-weight: 600; }
-.rows { padding: 0 18px 16px; overflow-x: auto; }
-.rows table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.rows th { text-align: left; font-weight: 600; color: var(--ink-3); padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.rows td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
-.rows code { background: var(--code); padding: 1px 6px; border-radius: 5px; font-size: 12.5px; white-space: pre; }
-.more { color: var(--ink-3); font-size: 13px; padding-top: 8px; }
-.key { padding: 18px; display: none; }
-.key.show { display: block; }
-.keynums { display: flex; gap: 22px; flex-wrap: wrap; margin: 4px 0 10px; }
-.keynums div { font-size: 13px; color: var(--ink-3); }
-.keynums b { display: block; font-size: 26px; color: var(--ink); font-variant-numeric: tabular-nums; }
-.keynote { font-size: 14px; color: var(--ink-2); margin: 0; }
-.bar-actions { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; border-bottom: 1px solid var(--line); }
-.link { background: none; border: 0; color: var(--accent); font-weight: 600; font-size: 13.5px; padding: 0; }
-footer { margin-top: 28px; color: var(--ink-3); font-size: 13px; display: grid; gap: 6px; }
-footer a { color: inherit; }
-.toggle { justify-self: start; border: 1px solid var(--line); background: var(--panel); color: var(--ink-2); border-radius: 99px; padding: 6px 12px; font-size: 12px; margin-top: 4px; }
+details.check summary:hover .ct { text-decoration: underline; text-underline-offset: 3px; }
+.no { font-family: var(--mono); font-size: 14px; color: var(--ink-3); }
+.fixfirst { display: block; margin-top: 3px; font-family: var(--cond); font-weight: 700; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: #16181d; background: var(--mark); padding: 1px 4px; width: max-content; }
+.ct { font-weight: 600; font-size: 17px; }
+.cw { color: var(--ink-2); font-size: 14.5px; margin-top: 2px; }
+.cnt { font-family: var(--cond); font-weight: 700; font-size: 30px; line-height: 1; font-variant-numeric: tabular-nums; }
+.cat { font-family: var(--cond); font-weight: 500; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.open-mark { font-family: var(--mono); color: var(--ink-3); margin-left: 6px; }
+details[open] .open-mark { color: var(--ink); }
+@media (max-width: 640px) { .snag-head, details.check summary { grid-template-columns: 44px 1fr 64px; } .snag-head .c4, .cat { display: none; } .cnt { font-size: 26px; } }
+.rows { padding: 0 0 16px 72px; overflow-x: auto; }
+@media (max-width: 640px) { .rows { padding-left: 0; } }
+.rows table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.rows th { text-align: left; font-family: var(--cond); font-weight: 600; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); padding: 6px 8px; border-bottom: 1px solid var(--ink); white-space: nowrap; }
+.rows td { padding: 6px 8px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+.rows code { font-family: var(--mono); font-size: 12.5px; background: var(--code); padding: 1px 5px; white-space: pre; }
+.more { color: var(--ink-3); font-size: 13.5px; padding-top: 8px; }
+.tools { display: flex; justify-content: flex-end; margin-top: 10px; }
+.link { background: none; border: 0; padding: 0; cursor: pointer; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* notes, like the notes block on a drawing */
+.notes { margin-top: 36px; border-top: 2px solid var(--ink); padding-top: 14px; display: grid; grid-template-columns: 180px 1fr; gap: 20px; }
+@media (max-width: 640px) { .notes { grid-template-columns: 1fr; gap: 8px; } }
+.notes h2 { margin: 0; font-family: var(--cond); font-weight: 600; font-size: 15px; letter-spacing: .1em; text-transform: uppercase; }
+.notes ol { margin: 0; padding-left: 20px; color: var(--ink-2); font-size: 14.5px; }
+.notes li { margin-bottom: 6px; }
+.notes a { color: var(--ink); }
+.notes .end { margin-top: 12px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; font-size: 14px; color: var(--ink-3); }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div>
-      <div class="kicker">Asset register check</div>
-      <h1>Is your asset register ready for AI?</h1>
-      <p class="sub">Drop in a CSV. Plain rules find what makes an AI give wrong answers about your building, and say why each one matters.</p>
-    </div>
-    <div class="privacy" title="The file is read by this page in your browser. It is never sent anywhere.">
-      <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l5.5 2v4.3c0 3.4-2.3 6.3-5.5 7.7C4.8 13.6 2.5 10.7 2.5 7.3V3z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 8l1.8 1.8L10.8 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      Runs in your browser. Nothing is uploaded.
-    </div>
-  </header>
+<div class="sheet">
+  <div class="strip">
+    <div>Asset register check</div>
+    <div class="muted">Plain rules, no AI</div>
+    <div class="muted">Runs in your browser</div>
+  </div>
 
-  <div class="grid">
-    <aside class="card pad">
-      <h2>Your register</h2>
+  <div class="hero">
+    <div>
+      <h1>Is your asset register ready for AI?</h1>
+    </div>
+    <div>
+      <p class="lede">Drop in a CSV. It finds what would make an AI give wrong answers about your building, and says why each one matters.</p>
+      <p class="privacy" style="margin-top:12px"><b>Nothing is uploaded.</b> Your file is read by this page, on your machine.</p>
+    </div>
+  </div>
+
+  <div class="cols">
+    <aside class="col-l">
+      <div class="sec"><span class="no">01</span>Register<span class="rule"></span></div>
       <label class="drop" id="drop">
         <b>Drop a CSV here</b>
-        <span>or click to choose a file. Export from your CAFM, or save the COBie Component sheet as CSV.</span>
+        <span>or click to choose a file. A CAFM export or the COBie Component sheet saved as CSV.</span>
         <input type="file" id="pick" accept=".csv,text/csv" hidden>
       </label>
-      <div class="or">or try a sample (a fictional 80-floor tower)</div>
       <div class="samples">
-        <button class="btn" data-sample="messy">Messy register<small>1,753 rows, problems planted</small></button>
-        <button class="btn" data-sample="clean">Clean register<small>1,767 rows</small></button>
+        <button class="sample" data-sample="messy"><span class="t">Messy sample register</span><span class="s">1,753 rows, 190 problems planted on purpose</span><span class="a">&rarr;</span></button>
+        <button class="sample" data-sample="clean"><span class="t">Clean sample register</span><span class="s">1,767 rows, the same building</span><span class="a">&rarr;</span></button>
       </div>
+      <p class="small-note">Both samples describe a fictional 80-floor tower.</p>
       <div class="file" id="file"></div>
-      <div class="map" id="map">
-        <h2 style="margin-top:6px">Columns found</h2>
+      <details class="map" id="map">
+        <summary id="mapsum"></summary>
         <table id="maptable"></table>
-        <p class="cw" style="margin:8px 0 0">Matched by name. Fix any that are wrong and it re-checks. <span class="req">*</span> required.</p>
-      </div>
+        <p class="small-note">Matched by name. Change any that are wrong and it checks again. <span class="req">*</span> required.</p>
+      </details>
     </aside>
 
-    <main id="out">
-      <div class="card empty" id="empty">
-        <b>Nothing checked yet</b>
-        Drop your register on the left, or open the messy sample to see what it finds.
-      </div>
+    <main class="col-r" id="out">
+      <div class="sec"><span class="no">02</span>Result<span class="rule"></span></div>
+      <div class="empty"><b>Nothing checked yet.</b>Drop your register on the left, or open the messy sample to see what it finds.</div>
     </main>
   </div>
 
-  <footer>
-    <div><b>How it works.</b> Plain rules, no AI. They look for duplicates, empty fields, the same thing spelled several ways, dates that can't be right, parents that don't exist, and floors missing assets their neighbours have.</div>
-    <div><b>The score</b> is the share of assets with no problem found, counting assets a floor seems to be missing. It's this tool's own rubric, not an industry standard.</div>
-    <div><b>The samples</b> are fictional, generated from the rules of the <a href="https://mohdimran32000.github.io/procedural-dubai/">Procedural Dubai</a> tower at 80 floors. Generic vendors, made-up serials. The messy one has 190 problems planted on purpose, listed in an answer key.</div>
-    <button class="toggle" id="theme">Light / dark</button>
-  </footer>
+  <section class="notes">
+    <h2>Notes</h2>
+    <div>
+      <ol>
+        <li>Plain rules, no AI. They look for duplicates, empty fields, the same thing spelled several ways, dates that can't be right, parents that don't exist, and floors missing assets their neighbours have.</li>
+        <li>The score is the share of assets with no problem found, counting assets a floor seems to be missing. Ready is 98 and above, close is 90 and above. It's this tool's own rubric, not an industry standard.</li>
+        <li>The samples are fictional, generated from the rules of the <a href="https://mohdimran32000.github.io/procedural-dubai/">Procedural Dubai</a> tower at 80 floors. Generic vendors, made-up serials. The messy one has 190 problems planted on purpose, listed in an answer key.</li>
+      </ol>
+      <div class="end">
+        <a href="https://github.com/mohdimran32000/asset-register-check">Source code on GitHub</a>
+        <button class="link" id="theme" style="font-weight:500">Light / dark</button>
+      </div>
+    </div>
+  </section>
 </div>
 
 <script src="checker.js"></script>
@@ -179,9 +227,9 @@ footer a { color: inherit; }
     return n;
   };
   const fmt = n => Number(n).toLocaleString('en-US');
+  const pad = n => String(n).padStart(2, '0');
   let table = null, map = {}, sampleKey = null, lastResult = null;
 
-  // ---- theme
   try { const t = localStorage.getItem('arc-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   $('#theme').onclick = () => {
     const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -190,7 +238,6 @@ footer a { color: inherit; }
     try { localStorage.setItem('arc-theme', next); } catch (e) {}
   };
 
-  // ---- input
   const drop = $('#drop'), pick = $('#pick');
   ['dragenter', 'dragover'].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.add('over'); }));
   ['dragleave', 'drop'].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.remove('over'); }));
@@ -208,9 +255,9 @@ footer a { color: inherit; }
     try {
       const csv = await fetch(`samples/asset-register-${name}.csv`).then(r => { if (!r.ok) throw 0; return r.text(); });
       const key = name === 'messy' ? await fetch('samples/answer-key.json').then(r => r.json()) : null;
-      load(csv, `asset-register-${name}.csv (sample)`, key);
+      load(csv, `asset-register-${name}.csv`, key);
     } catch (e) {
-      $('#file').textContent = 'Samples load from the live page. Opened as a local file, drop a CSV instead.';
+      $('#file').textContent = 'The samples load from the live page. Opened as a local file, drop a CSV instead.';
     }
   });
 
@@ -219,9 +266,10 @@ footer a { color: inherit; }
     map = Checker.detectColumns(table.headers);
     sampleKey = key;
     $('#file').innerHTML = '';
-    $('#file').append(el('b', {}, name), ` · ${fmt(table.rows.length)} rows, ${table.headers.length} columns`);
+    $('#file').append(el('div', {}, name), el('div', { style: 'color:var(--ink-3)' }, `${fmt(table.rows.length)} rows · ${table.headers.length} columns`));
     drawMap();
     run();
+    if (window.innerWidth < 860 && !new URLSearchParams(location.search).get('sample')) $('#out').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   function drawMap() {
@@ -232,71 +280,72 @@ footer a { color: inherit; }
         table.headers.map((h, i) => { const o = el('option', { value: i }, h); if (map[k] === i) o.selected = true; return o; }));
       t.append(el('tr', {}, el('td', {}, def.label, Checker.REQUIRED.includes(k) ? el('span', { class: 'req' }, ' *') : null), el('td', {}, sel)));
     }
+    const found = Object.keys(map).length, missingReq = Checker.REQUIRED.filter(k => map[k] == null).length;
+    $('#mapsum').innerHTML = '';
+    const nf = Object.keys(Checker.FIELDS).length;
+    $('#mapsum').append(...[el('b', {}, found === nf ? `All ${nf} fields` : `${found} of ${nf} fields`), ' found in your columns',
+      missingReq ? el('span', { class: 'req' }, ` (${missingReq} required missing)`) : null, '. ', el('u', {}, 'Check or change')].filter(x => x != null));
     $('#map').classList.add('show');
+    if (missingReq) $('#map').open = true;
   }
 
-  // ---- results
   function run() {
     const r = Checker.analyze(table, map);
     lastResult = r;
     const out = $('#out'); out.innerHTML = '';
-    const vClass = 'v-' + r.verdict.split(' ')[0];
     const total = r.rows + r.missingAssets;
+    const vClass = 'v-' + r.verdict.split(' ')[0];
 
-    const top = el('div', { class: 'card' },
-      el('div', { class: 'top' },
-        el('div', { class: 'score' },
-          el('div', { class: 'n', id: 'scoreN' }, '0'),
-          el('div', { class: 'of' }, 'AI-readiness, out of 100'),
-          el('span', { class: 'verdict ' + vClass }, r.verdict === 'Ready' ? 'Ready' : r.verdict === 'Close' ? 'Close. Fix the list below.' : 'Not yet')),
-        el('div', { class: 'facts' },
-          el('p', {}, el('strong', {}, fmt(r.clean)), ` of ${fmt(total)} assets have no problem found.`),
-          r.flaggedRows ? el('p', {}, el('strong', {}, fmt(r.flaggedRows)), ' rows need a fix.') : el('p', {}, 'Nothing found by these rules.'),
-          r.missingAssets ? el('p', {}, 'About ', el('strong', {}, fmt(r.missingAssets)), ' assets look missing from floors that should have them.') : null,
-          el('div', { class: 'meter' }, el('i', { id: 'meterI' })))),
-      el('div', { class: 'dims' }, r.dims.map(d => el('div', { class: 'dim' },
-        el('div', { class: 'k' }, d.name),
-        el('div', { class: 'v' + (d.issues ? '' : ' zero') }, d.issues ? fmt(d.issues) : '0'),
-        el('div', { class: 's' }, d.issues ? (d.name === 'Coverage' ? 'floors with gaps' : `issue${d.issues > 1 ? 's' : ''}`) : 'all clear')))));
-    out.append(top);
+    out.append(el('div', { class: 'sec' }, el('span', { class: 'no' }, '02'), 'Result', el('span', { class: 'rule' })));
+    out.append(el('div', { class: 'result' },
+      el('div', { class: 'scorebox' },
+        el('div', { class: 'lab' }, 'AI-readiness'),
+        el('div', { class: 'n' }, el('span', { id: 'scoreN' }, '0'), el('small', {}, '/100')),
+        el('div', { class: 'verdict ' + vClass }, r.verdict)),
+      el('div', { class: 'facts' },
+        el('p', {}, el('b', { class: 'mark' }, fmt(r.clean)), ` of ${fmt(total)} assets have no problem found.`),
+        r.flaggedRows ? el('p', {}, el('b', {}, fmt(r.flaggedRows)), ' rows need a fix.') : el('p', {}, 'Nothing found by these rules.'),
+        r.missingAssets ? el('p', {}, 'About ', el('b', {}, fmt(r.missingAssets)), ' assets look missing from floors that should have them.') : null,
+        el('div', { class: 'bar', role: 'img', 'aria-label': `score ${r.score} of 100` }, el('i', { id: 'barI' }), el('span', { class: 'ticks' })))));
+    out.append(el('table', { class: 'dims' },
+      el('thead', {}, el('tr', {}, r.dims.map(d => el('th', {}, d.name)))),
+      el('tbody', {}, el('tr', {}, r.dims.map(d => el('td', { class: d.issues ? '' : 'zero' }, d.issues ? fmt(d.issues) : '0',
+        el('small', {}, d.issues ? (d.name === 'Coverage' ? 'floors with gaps' : 'issues') : 'clear')))))));
     countUp($('#scoreN'), r.score);
-    requestAnimationFrame(() => requestAnimationFrame(() => { $('#meterI').style.width = r.score + '%'; }));
+    requestAnimationFrame(() => requestAnimationFrame(() => { $('#barI').style.width = r.score + '%'; }));
 
     if (sampleKey) {
       const s = Checker.scoreAgainstKey(r, sampleKey);
-      const card = el('div', { class: 'card key show section' },
-        el('h2', {}, 'Checked against the answer key'),
-        el('div', { class: 'keynums' },
-          el('div', {}, el('b', {}, fmt(s.planted)), 'problems planted'),
-          el('div', {}, el('b', {}, fmt(s.found)), 'found'),
-          el('div', {}, el('b', {}, fmt(s.missed.length)), 'missed'),
-          el('div', {}, el('b', {}, fmt(s.falseAlarms.length)), 'false alarms')),
-        el('p', { class: 'keynote' }, s.missed.length
+      out.append(el('div', { class: 'cert show' },
+        el('h3', {}, 'Checked against the answer key'),
+        el('div', { class: 'certnums' },
+          el('div', {}, el('b', {}, fmt(s.planted)), el('span', {}, 'planted')),
+          el('div', {}, el('b', {}, fmt(s.found)), el('span', {}, 'found')),
+          el('div', {}, el('b', {}, fmt(s.missed.length)), el('span', {}, 'missed')),
+          el('div', {}, el('b', {}, fmt(s.falseAlarms.length)), el('span', {}, 'false alarms'))),
+        el('p', {}, s.missed.length
           ? `Missed: ${[...new Set(s.missed.map(m => `"${m.messy}"`))].join(', ')} written for "${s.missed[0].clean}" (${s.missed.length} rows). Same thing, different words. Rules catch spelling, not meaning.`
           : 'Every planted problem was found.'),
-        s.extra.length ? el('p', { class: 'keynote', style: 'margin-top:6px' }, `${s.extra.length} more flags are knock-on effects of planted problems, like the other row of a duplicated tag.`) : null);
-      out.append(card);
+        s.extra.length ? el('p', {}, `${s.extra.length} more flags are knock-on effects of planted problems, like the other row of a duplicated tag.`) : null));
     }
 
     if (!r.checks.length) return;
-    const first = r.checks.slice(0, 3);
-    out.append(el('div', { class: 'section' },
-      el('h2', {}, 'Fix these first'),
-      el('div', { class: 'first' }, first.map(c => el('div', { class: 'card fix' },
-        el('div', { class: 'c' }, fmt(c.count)), el('div', { class: 't' }, c.title), el('p', { class: 'w' }, c.why))))));
-
-    const list = el('div', { class: 'card' },
-      el('div', { class: 'bar-actions' }, el('h2', { style: 'margin:0' }, 'Everything it found'),
-        el('button', { class: 'link', onclick: downloadIssues }, 'Download as CSV')),
-      r.checks.map(c => {
-        const d = el('details', { class: 'check' },
-          el('summary', {}, el('div', { class: 'cnt' }, fmt(c.count)),
-            el('div', {}, el('div', { class: 'ct' }, c.title), el('div', { class: 'cw' }, c.why)),
-            el('span', { class: 'tagdim' }, c.dim)));
-        d.addEventListener('toggle', () => { if (d.open && !d.dataset.drawn) { d.append(rowsTable(c)); d.dataset.drawn = 1; } }, { once: false });
-        return d;
-      }));
-    out.append(el('div', { class: 'section' }, list));
+    out.append(el('div', { class: 'sec', style: 'margin-top:34px' }, el('span', { class: 'no' }, '03'), 'Findings', el('span', { class: 'rule' })));
+    out.append(el('div', { class: 'snag-head' }, el('span', {}, 'No.'), el('span', {}, 'Finding'), el('span', { class: 'r' }, 'Count'), el('span', { class: 'c4' }, 'Type')));
+    r.checks.forEach((c, i) => {
+      const d = el('details', { class: 'check' },
+        el('summary', {},
+          el('span', { class: 'no' }, pad(i + 1), i < 3 ? el('span', { class: 'fixfirst' }, 'Fix first') : null),
+          el('span', {}, el('div', { class: 'ct' }, c.title, el('span', { class: 'open-mark' }, '+')), el('div', { class: 'cw' }, c.why)),
+          el('span', { class: 'cnt' }, fmt(c.count)),
+          el('span', { class: 'cat' }, c.dim)));
+      d.addEventListener('toggle', () => {
+        d.querySelector('.open-mark').textContent = d.open ? '−' : '+';
+        if (d.open && !d.dataset.drawn) { d.append(rowsTable(c)); d.dataset.drawn = 1; }
+      });
+      out.append(d);
+    });
+    out.append(el('div', { class: 'tools' }, el('button', { class: 'link', onclick: downloadIssues }, 'Download the findings as CSV')));
   }
 
   function rowsTable(c) {
@@ -306,16 +355,16 @@ footer a { color: inherit; }
       el('thead', {}, el('tr', {}, isGap ? [el('th', {}, 'Level'), el('th', {}, 'Found'), el('th', {}, 'Note')] : [el('th', {}, 'Row'), el('th', {}, 'Tag'), el('th', {}, 'Field'), el('th', {}, 'Value'), el('th', {}, 'Note')])),
       el('tbody', {}, show.map(it => el('tr', {}, isGap
         ? [el('td', {}, it.level), el('td', {}, it.value), el('td', {}, it.note)]
-        : [el('td', {}, it.row), el('td', {}, el('code', {}, it.tag || '')), el('td', {}, it.field || 'whole row'), el('td', {}, it.value === '' ? el('i', {}, 'empty') : el('code', {}, it.value)), el('td', {}, it.note)])))),
+        : [el('td', { class: 'mono' }, it.row), el('td', {}, el('code', {}, it.tag || '')), el('td', {}, it.field || 'whole row'), el('td', {}, it.value === '' ? el('i', {}, 'empty') : el('code', {}, it.value)), el('td', {}, it.note)])))),
       c.items.length > show.length ? el('div', { class: 'more' }, `Showing 200 of ${fmt(c.items.length)}. Download the CSV for all of them.`) : null);
   }
 
   function downloadIssues() {
     if (!lastResult) return;
     const q = v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
-    const lines = [['check', 'dimension', 'row', 'tag', 'field', 'value', 'note'].join(',')];
+    const lines = [['check', 'type', 'row', 'tag', 'field', 'value', 'note'].join(',')];
     for (const c of lastResult.checks) for (const it of c.items) lines.push([c.title, c.dim, it.row, it.tag, it.field, it.value, it.note].map(q).join(','));
-    const a = el('a', { href: URL.createObjectURL(new Blob([lines.join('\n')], { type: 'text/csv' })), download: 'register-issues.csv' });
+    const a = el('a', { href: URL.createObjectURL(new Blob([lines.join('\n')], { type: 'text/csv' })), download: 'register-findings.csv' });
     document.body.append(a); a.click(); a.remove();
   }
 
@@ -325,7 +374,6 @@ footer a { color: inherit; }
     requestAnimationFrame(step);
   }
 
-  // ?sample=messy opens a sample straight away (handy for screen recording)
   const s = new URLSearchParams(location.search).get('sample');
   if (s) document.querySelector(`[data-sample="${s}"]`)?.click();
 })();

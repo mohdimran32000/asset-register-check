@@ -79,4 +79,7 @@ false alarms.**
 Open `index.html` and drop a CSV on it. The sample buttons need the files served, so run
 `python -m http.server` in this folder and open http://localhost:8000.
 
+Fonts: Barlow, Barlow Condensed and IBM Plex Mono, under the SIL Open Font License. They are bundled in `fonts/`
+so the page makes no requests to anyone else.
+
 Made by Mohamed Imran with Claude Code (Opus 5.5). MIT licence.
